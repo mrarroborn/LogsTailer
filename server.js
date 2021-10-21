@@ -7,6 +7,8 @@ const io = new Server(server);
 const fs = require('fs');
 var messageFile = "logs.txt";
 
+//Declaring Routes
+app.use('/api/log/', require('./routes/api/log'));
 app.get('/log', (req, res) => {
   res.sendFile(__dirname + '/client/index.html');
 });
@@ -15,6 +17,7 @@ app.get('/log', (req, res) => {
     res.sendFile(__dirname + '/client/style.css');
   });
 
+  // establishing io connection
 io.on('connection', client => { 
     console.log("User connected!");
     var data = fs.readFileSync(messageFile, 'utf8');
@@ -26,6 +29,7 @@ io.on('connection', client => {
     io.emit('broadcast',logData); 
  });
 
+//  Check whether file is updated and update UI connent accordingly
   fs.open(messageFile, 'r', function(err, fd) {
     if(err) {
         console.log("Error file not found !!");
