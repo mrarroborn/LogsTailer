@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/de73d083-3490-436d-9d54-7297853169d2/resourceGroups/freetrail/providers/Microsoft.Web/sites/logtailer",
+  "appService.deploySubpath": "."
+}
