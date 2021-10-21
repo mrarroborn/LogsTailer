@@ -7,6 +7,10 @@
     "start": "node server",
     "server": "nodemon server"
   },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
   "author": "Harshit Saxena",
   "license": "MIT",
   "dependencies": {
