@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Log Monitoring System</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="container">
+  <div class="Terminal">
+    <div class="Terminal__Toolbar">
+      <div class="Toolbar__buttons">
+        <button class="Toolbar__button Toolbar__button--exit">&#10005;</button>
+        <button class="Toolbar__button">&#9472;</button>
+        <button class="Toolbar__button">&#9723;</button>
+      </div>
+      <p class="Toolbar__user">Log Monitoring System</p>
+    </div>
+    <div class="Terminal__body">
+      <div class="Terminal__text">Fetching Server Logs...</div>
+      <div class="Terminal__Prompt" id="logs">
+    
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+</body>
+</html>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+  socket.on('broadcast', function(msg) {
+    var log = document.getElementById('logs');
+    log.innerHTML = msg;
+    // item.textContent = msg;
+    // messages.innerHTML(item);
+    window.scrollTo(0, document.body.scrollHeight);
+  });
+</script>
