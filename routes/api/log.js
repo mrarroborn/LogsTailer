@@ -5,9 +5,15 @@ var messageFile = "logs.txt";
 
 // APi to get alll the content of log file
 router.get('/get',async (req,res) => {
+    try {
     var data = fs.readFileSync(messageFile, 'utf8');
     var lines = data.split("\n");
-    res.send(lines)
+    res.send(lines);
+ }
+    catch (err) {
+        console.error(err.message);
+     res.status(500).send('Server Error');
+    }
 });
 
 // Api to append content to log file
